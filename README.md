@@ -31,12 +31,16 @@ cd <仓库目录>
 python run_asm.py <你的汇编文件名>
 ```
 
-👉 示例：运行 `hello.asm`
+👉 示例：运行 `test.asm`
 
 ```bash
-python run_asm.py hello.asm
-# 或省略 .asm 后缀（脚本自动补全）
-python run_asm.py hello
+python run_asm.py test.asm
+```
+
+👉或省略 .asm 后缀（脚本自动补全）
+
+```bash
+python run_asm.py test
 ```
 
 ### 自定义 DOSBox 路径（可选）
