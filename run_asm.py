@@ -1,3 +1,7 @@
+# 使用方法，
+# python run_asm.py <ASM filename> [--dosbox <path>]
+# ASM filename是指
+# 括号内内容为可选的
 import os
 import sys
 import subprocess
@@ -17,7 +21,13 @@ def main(dosbox_path:str=""):
         sys.exit(1)
 
     asm_name = sys.argv[1]
-    asm_file = Path(f"{asm_name}.asm")
+    # 防呆设计，可能带后缀也可能不带后缀
+    if asm_name[-4:]==".asm":
+        asm_file=Path(asm_name)
+        asm_name=asm_name[:-4]
+    else :
+        asm_file = Path(f"{asm_name}.asm")
+        
     custom_dosbox = None
 
     # Parse --dosbox parameter
@@ -114,5 +124,6 @@ link {asm_name}.obj;
 
 
 if __name__ == "__main__":
+    # 将dosbox的路径写在Path括号内，字符串形式
     dosbox=Path("E:\DOSBox-0.74-3\DOSBox.exe")
     main(dosbox_path=dosbox)
