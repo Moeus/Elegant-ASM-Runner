@@ -27,7 +27,14 @@ def main(dosbox_path:str=""):
         asm_name=asm_name[:-4]
     else :
         asm_file = Path(f"{asm_name}.asm")
-        
+    asm_exe=Path(f"./{asm_name}.exe")
+    if asm_exe.exists():
+        asm_exe.unlink()
+        print(f"[Python] delete existed exe: {asm_exe}")
+    else:
+        print(f"not exe")
+    
+    
     custom_dosbox = None
 
     # Parse --dosbox parameter
@@ -125,5 +132,5 @@ link {asm_name}.obj;
 
 if __name__ == "__main__":
     # 将dosbox的路径写在Path括号内，字符串形式
-    dosbox=Path("E:\DOSBox-0.74-3\DOSBox.exe")
+    dosbox=Path(r"E:\DOSBox-0.74-3\DOSBox.exe")
     main(dosbox_path=dosbox)
